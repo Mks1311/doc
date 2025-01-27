@@ -39,6 +39,13 @@ const DocumentEditor = () => {
     },
   });
 
+  // Focus the editor when the page is clicked
+  const handlePageClick = () => {
+    if (editor) {
+      editor.commands.focus();
+    }
+  };
+
   useEffect(() => {
     // Focus the editor on the last page
     if (editor && pages.length > 0) {
@@ -53,14 +60,15 @@ const DocumentEditor = () => {
           key={page.id}
           ref={(el) => (pageRefs.current[index] = el)}
           className={styles.a4Page}
+          onClick={handlePageClick} // Make the entire page clickable
         >
-            <div className={styles.editorContainer}>
-          {index === pages.length - 1 ? (
+          <div className={styles.editorContainer}>
+            {index === pages.length - 1 ? (
               <EditorContent editor={editor} />
             ) : (
-                <div dangerouslySetInnerHTML={{ __html: page.content }} />
+              <div dangerouslySetInnerHTML={{ __html: page.content }} />
             )}
-            </div>
+          </div>
         </div>
       ))}
     </div>

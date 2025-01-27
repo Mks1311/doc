@@ -18,3 +18,8 @@
     height: 100%; /* Make the editor container fill the A4 page */
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
   }
+
+  .ProseMirror {
+    height: 100%;
+    outline: none; /* Remove the default outline */
+  }
